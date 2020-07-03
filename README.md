@@ -62,11 +62,11 @@
 
 **시각화자료**
  
-![LDA](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드5.png)
+![LDA](.\슬라이드5.png)
 <img src="file:///C:/Users/Hyennnnnnnnnnnn/Desktop/LDA.html" width="100%"></img>
 <br>
-![Kmeans](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드8.png)
-![Kmeans](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드9.png)
+![Kmeans](.\슬라이드8.png)
+![Kmeans](.\슬라이드9.png)
 <img src="file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html" width="100%"></img>
  <br>
  <br>
