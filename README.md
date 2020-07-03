@@ -62,12 +62,11 @@
 
 **시각화자료**
  
-![LDA](.\슬라이드5.png)
-<img src="file:///C:/Users/Hyennnnnnnnnnnn/Desktop/LDA.html" width="100%"></img>
-<br>
-![Kmeans](.\슬라이드8.png)
-![Kmeans](.\슬라이드9.png)
-<img src="file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html" width="100%"></img>
+![LDA](./img/슬라이드5.png)
+
+![Kmeans](./img/슬라이드8.png)
+![Kmeans](./img/슬라이드9.png)
+
  <br>
  <br>
 
