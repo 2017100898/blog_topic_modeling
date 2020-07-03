@@ -2,8 +2,6 @@
 경희대학교 데이터분석 캡스톤디자인 산업경영공학과 박혜원
 
 
-## overview
-
 ## 배경 및 필요성
  * 네이버 블로그에서는 블로그 주제와 각 포스팅의 주제를 설정할 수 있으나, 이는 블로거가 직접 선택하는 것이기 때문에 **실제 주제와 명목상 주제가 다른 경우가 많다.** 
  
@@ -92,8 +90,12 @@ array
 
 ![LDAexplain](https://user-images.githubusercontent.com/64299475/86463203-0668c780-bd68-11ea-8e92-998e8ed6bb7d.JPG)
 
-<img width="499" alt="4" src="https://user-images.githubusercontent.com/64299475/86463132-e933f900-bd67-11ea-938a-71bab51813e1.png">
+<br>
 
+__깁스샘플링__  
+<img width="300" alt="4" src="https://user-images.githubusercontent.com/64299475/86463132-e933f900-bd67-11ea-938a-71bab51813e1.png">
+
+__예시__  
 ![LDAsampling1](https://user-images.githubusercontent.com/64299475/86463133-eb965300-bd67-11ea-92c5-04daad417f19.JPG)
 
 ![LDAsampling2](https://user-images.githubusercontent.com/64299475/86463135-ecc78000-bd67-11ea-9144-db3e6ae455af.JPG)
@@ -108,6 +110,7 @@ array
 
 ```Output: 블로그 별 주제```
 
+---
 
  ```c
 # Build Model
@@ -141,6 +144,7 @@ pyLDAvis.display(vis)
 
  ```
 
+---
 
  * Kmeans
 
@@ -156,6 +160,8 @@ pyLDAvis.display(vis)
 → 가장 많이 등장한 포스팅 주제를 최종 블로그 주제로 할당
 
 ```Output: 블로그 별 주제```
+
+---
 
 ```c
 naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
@@ -183,6 +189,8 @@ prepared_data = kmeans_to_prepared_data(
 pyLDAvis.display(prepared_data)
 
 ```
+
+<br>
 
 ### 평가
  * LDA: Topic Coherence (0.62)
