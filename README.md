@@ -62,10 +62,12 @@
 
 **시각화자료**
  
-![LDA](./img/슬라이드5.png)
+file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/LDA.html
+![LDA](https://user-images.githubusercontent.com/64299475/86433234-1fa45080-bd35-11ea-89c9-b2a3daffc87d.PNG)
 
-![Kmeans](./img/슬라이드8.png)
-![Kmeans](./img/슬라이드9.png)
+file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html#topic=0&lambda=1&term=
+![Kmeans](https://user-images.githubusercontent.com/64299475/86433246-2763f500-bd35-11ea-8b56-95af66d74bb8.PNG)
+![Kmeans](https://user-images.githubusercontent.com/64299475/86433261-321e8a00-bd35-11ea-8a91-24a30b833b53.PNG)
 
  <br>
  <br>
