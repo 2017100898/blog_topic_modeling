@@ -84,7 +84,7 @@ array
 <br>
 
 ### 토픽 모델링
- * LDA
+#### LDA
 
 ```Input : 문서 단어 Tf-Idf (점수 높은 1400개 단어)```
 
@@ -110,7 +110,9 @@ __예시__
 
 ```Output: 블로그 별 주제```
 
----
+<br>
+<br>
+<br>
 
  ```c
 # Build Model
@@ -144,9 +146,11 @@ pyLDAvis.display(vis)
 
  ```
 
----
+<br>
+<br>
+<br>
 
- * Kmeans
+ #### Kmeans
 
 ```Input : L2 Norm 정규화한 데이터 t-sne 그래프에 임베딩```
 
@@ -161,7 +165,9 @@ pyLDAvis.display(vis)
 
 ```Output: 블로그 별 주제```
 
----
+<br>
+<br>
+<br>
 
 ```c
 naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
@@ -190,6 +196,7 @@ pyLDAvis.display(prepared_data)
 
 ```
 
+<br>
 <br>
 
 ### 평가
