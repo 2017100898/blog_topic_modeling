@@ -61,7 +61,13 @@
  * 하지만 LDA는 단어 수를 1200개로 고정해둔 상태이며, K-means는 별도의 설정 없이 30000개를 사용한 상태이기 때문에 단순 비교는 어렵다.
 
 **시각화자료**
- * 발표자료 및 깃허브 업로드
+ 
+![LDA](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드5)
+<img src="file:///C:/Users/Hyennnnnnnnnnnn/Desktop/LDA.html" width="100%"></img>
+<br>
+![LDA](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드8)
+![LDA](C:\Users\Hyennnnnnnnnnnn\Desktop\발표자료_박혜원\슬라이드9)
+<img src="file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html" width="100%"></img>
  <br>
  <br>
 
