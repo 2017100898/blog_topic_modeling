@@ -88,6 +88,27 @@ array
 ### 토픽 모델링
  * LDA
 
+```Input : 문서 단어 Tf-Idf (점수 높은 1400개 단어)```
+
+![LDAexplain](https://user-images.githubusercontent.com/64299475/86463203-0668c780-bd68-11ea-8e92-998e8ed6bb7d.JPG)
+
+<img width="499" alt="4" src="https://user-images.githubusercontent.com/64299475/86463132-e933f900-bd67-11ea-938a-71bab51813e1.png">
+
+![LDAsampling1](https://user-images.githubusercontent.com/64299475/86463133-eb965300-bd67-11ea-92c5-04daad417f19.JPG)
+
+![LDAsampling2](https://user-images.githubusercontent.com/64299475/86463135-ecc78000-bd67-11ea-9144-db3e6ae455af.JPG)
+
+
+```Output: 포스팅 별 주제```
+
+포스팅(문서) 별 주제 도출
+→ 라벨링
+→ 블로거 별 포스팅(문서) 주제 개수 Count
+→ 가장 많이 등장한 포스팅 주제를 최종 블로그 주제로 할당
+
+```Output: 블로그 별 주제```
+
+
  ```c
 # Build Model
 lda_model = LatentDirichletAllocation(n_components=22, learning_method='online', random_state=777, max_iter=1)
@@ -122,6 +143,19 @@ pyLDAvis.display(vis)
 
 
  * Kmeans
+
+```Input : L2 Norm 정규화한 데이터 t-sne 그래프에 임베딩```
+
+![Kmeans](https://user-images.githubusercontent.com/64299475/86463248-17b1d400-bd68-11ea-8b43-c7d399683b62.png)
+
+```Output: 포스팅 별 주제```
+
+포스팅(문서) 별 주제 도출
+→ 라벨링
+→ 블로거 별 포스팅(문서) 주제 개수 Count
+→ 가장 많이 등장한 포스팅 주제를 최종 블로그 주제로 할당
+
+```Output: 블로그 별 주제```
 
 ```c
 naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
