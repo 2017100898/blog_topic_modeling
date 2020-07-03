@@ -62,13 +62,12 @@
 
 **시각화자료**  
  ```LDA```  
-
-<file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/LDA.html>  
+[LOOK!](https://woni-hye.tistory.com/6)
 
 ![LDA](https://user-images.githubusercontent.com/64299475/86433234-1fa45080-bd35-11ea-89c9-b2a3daffc87d.PNG)
 
  ```kmeans```  
-<file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html#topic=0&lambda=1&term=>
+[LOOK!](https://woni-hye.tistory.com/7)
 
 ![Kmeans](https://user-images.githubusercontent.com/64299475/86433246-2763f500-bd35-11ea-8b56-95af66d74bb8.PNG)
 ![Kmeans](https://user-images.githubusercontent.com/64299475/86433261-321e8a00-bd35-11ea-8a91-24a30b833b53.PNG)
