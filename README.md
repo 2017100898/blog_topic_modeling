@@ -43,16 +43,12 @@
 # tokenize 를 위한 문서화
 
 text['guel'] = text.apply(lambda row: (row['guel']), axis=1)
-text['guel'].head()
 
 # tokenize
-
 import nltk
 text['guel']= text.apply(lambda row: nltk.word_tokenize (row['guel']), axis=1)
-text.head()
 
 # 불용어 제거
-
 temp=[]
 
 with open('./stop_words.txt', 'r',encoding='utf-8') as stop:
@@ -67,10 +63,8 @@ stop_words=stop_words.split(' ')
 text['stopwords']=text['guel'].apply(lambda x: [word for word in x if word not in stop_words])
 
 tokenized_doc = text['stopwords'].apply(lambda x : [word for word in x if len(word) > 1])
-tokenized_doc[:5]
 
-#역토큰화
-
+# 역토큰화
 detokenized_doc = []
 for i in range(len(text)):
     t = ' '.join(tokenized_doc[i])
@@ -78,7 +72,6 @@ for i in range(len(text)):
 text['stopwords'] = detokenized_doc
 
 text.to_csv("plusotherblog_dt.csv", header = True, index=False, encoding='CP949')
-text.head()
 
 # 문서 내 단어 Count
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
@@ -95,11 +88,144 @@ array
 <br>
 
 ### 토픽 모델링
- * LDA, Kmeans
+ * LDA
+
+ ```c
+from sklearn.decomposition import LatentDirichletAllocation
+
+# Build Model
+lda_model = LatentDirichletAllocation(n_components=22, learning_method='online', random_state=777, max_iter=1)
+lda_top = lda_model.fit_transform(Y)
+print(lda_model.components_.shape)
+
+# 단어집합 (1400개 단어)
+terms = vectorizer.get_feature_names() 
+
+from gensim import corpora
+dictionary = corpora.Dictionary(tokenized_doc)
+corpus = [dictionary.doc2bow(text) for text in tokenized_doc]
+
+# Topic 별 최빈 단어 추출
+import gensim
+
+NUM_TOPICS = 22 #22개의 토픽, k=22
+%time ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics = NUM_TOPICS, id2word=dictionary, passes=15, random_state=9)
+topics = ldamodel.print_topics(num_words=4)
+for topic in topics:
+    print(topic)
+
+# 시각화
+import pyLDAvis.gensim
+pyLDAvis.enable_notebook()
+vis = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
+pyLDAvis.save_html(vis,'LDA.html')
+pyLDAvis.display(vis)
+
+ ```
+
+
+ <br>
+ * Kmeans
+
+```c
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.preprocessing import normalize
+from sklearn.cluster import KMeans
+import pyLDAvis
+from kmeans_to_pyLDAvis import kmeans_to_prepared_data
+from soyclustering import SphericalKMeans
+
+naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
+docs = naverData['stopwords'].values.tolist()
+
+# Count vector -> L2 정규화 (단어 문서 유클리드 거리)
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(naverData['stopwords'].values.astype('U'))
+X = normalize(X, norm='l2')
+
+# 100개의 cluster 중심
+%time kmeans = KMeans(n_clusters=100,random_state=0).fit(X)
+labels = kmeans.labels_
+centers = kmeans.cluster_centers_
+
+# 시각화 (use pyLDAvis)
+vocab = [vocab for vocab, idx in sorted(vectorizer.vocabulary_.items(), key=lambda x:x[1])]
+
+prepared_data = kmeans_to_prepared_data(
+    X, vocab, centers, labels,
+    embedding_method='tsne')
+
+pyLDAvis.display(prepared_data)
+
+```
 
 ### 평가
  * LDA: Topic Coherence (0.62)
  * Kmeans: Average of Word2Vec Similarity (0.43)
+
+```c
+from __future__ import print_function
+from gensim.models import KeyedVectors
+ko_model = KeyedVectors.load_word2vec_format('wiki.ko.vec')
+
+data = pd.DataFrame(prepared_data.token_table)
+
+k=1
+all=0
+co=0
+
+excepttopic=0 #군집크기가 10안되는 작은 군집 (and other(기타) 군집) 고려 안함
+
+while(k<=100):
+    temp=0
+    exceptnum=0
+    
+    filter = data[data['Topic'] == k]
+    
+    if (len(filter) > 5):
+        print("-------------------")
+    else:
+        print("-------------------")
+        excepttopic+=1
+        pass
+        
+    word = pd.DataFrame(filter['Term'])
+    word= pd.DataFrame(word.reset_index()['Term'])
+    
+    # 군집 내 상위 5개 단어 비교
+    for i in range(5):
+        for j in range(5):
+            try:
+                term1= (''.join(map(str,word.values[i])))
+                term2= (''.join(map(str, word.values[j])))
+                sim_score = ko_model.wv.similarity(term1, term2)
+            except:
+                exceptnum+=1
+                pass
+            
+            temp+=(sim_score)
+            
+    temp= temp-5+exceptnum
+    co= ((temp)/((5-exceptnum)*(4-exceptnum))) 
+    # 군집 별 평균 word2vec 점수
+    #'덕질'과 같은 vec에 없는 단어 고려 안 함
+    print(k,"번 Cluster의 Word2Vec Similarity : ", co)
+    
+    if k in [13,15,21,22,28,32,45,46,48,54,64,88]:
+        excepttopic+=1
+        co=0
+        print(co)
+        
+    all+=co
+    k+=1
+
+# 모든 군집 평균 word2vec 점수
+all= all/(100-excepttopic)
+
+print(">>> Kmeans Word2Vec similarity average : ", all)
+print(">>> 포함되지 않은 Clustering 개수 : " ,excepttopic)
+
+```
 
 <br>
 <br>
