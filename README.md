@@ -89,8 +89,6 @@ array
  * LDA
 
  ```c
-from sklearn.decomposition import LatentDirichletAllocation
-
 # Build Model
 lda_model = LatentDirichletAllocation(n_components=22, learning_method='online', random_state=777, max_iter=1)
 lda_top = lda_model.fit_transform(Y)
@@ -123,26 +121,20 @@ pyLDAvis.display(vis)
  ```
 
 
- <br>
  * Kmeans
 
 ```c
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.preprocessing import normalize
-from sklearn.cluster import KMeans
-import pyLDAvis
-from kmeans_to_pyLDAvis import kmeans_to_prepared_data
-from soyclustering import SphericalKMeans
-
 naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
 docs = naverData['stopwords'].values.tolist()
 
+# 전처리
 # Count vector -> L2 정규화 (단어 문서 유클리드 거리)
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(naverData['stopwords'].values.astype('U'))
 X = normalize(X, norm='l2')
 
 # 100개의 cluster 중심
+# Kmeans Training
 %time kmeans = KMeans(n_clusters=100,random_state=0).fit(X)
 labels = kmeans.labels_
 centers = kmeans.cluster_centers_
