@@ -61,16 +61,14 @@
  * 하지만 LDA는 단어 수를 1200개로 고정해둔 상태이며, K-means는 별도의 설정 없이 30000개를 사용한 상태이기 때문에 단순 비교는 어렵다.
 
 **시각화자료**
- * LDA  
- 
-Link: [LDA][LDAlink]
+ ```LDA```  
+Link: [LDA][LDAlink]  
 [LDAlink]: file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/LDA.html  
 
 ![LDA](https://user-images.githubusercontent.com/64299475/86433234-1fa45080-bd35-11ea-89c9-b2a3daffc87d.PNG)
 
-* kmeans  
-
-Link: [Kmeans][Kmeanslink]
+ ```kmeans```  
+Link: [Kmeans][Kmeanslink]  
 [Kmeanslink]: file:///C:/Users/Hyennnnnnnnnnnn/Documents/GitHub/BlogTopic/vis/kmeans.html#topic=0&lambda=1&term=  
 
 ![Kmeans](https://user-images.githubusercontent.com/64299475/86433246-2763f500-bd35-11ea-8b56-95af66d74bb8.PNG)
