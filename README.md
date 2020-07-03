@@ -41,7 +41,6 @@
 ```c
 
 # tokenize 를 위한 문서화
-
 text['guel'] = text.apply(lambda row: (row['guel']), axis=1)
 
 # tokenize
@@ -61,7 +60,6 @@ stop_words=' '.join(map(str, temp))
 stop_words=stop_words.split(' ')
 
 text['stopwords']=text['guel'].apply(lambda x: [word for word in x if word not in stop_words])
-
 tokenized_doc = text['stopwords'].apply(lambda x : [word for word in x if len(word) > 1])
 
 # 역토큰화
@@ -98,13 +96,14 @@ lda_model = LatentDirichletAllocation(n_components=22, learning_method='online',
 lda_top = lda_model.fit_transform(Y)
 print(lda_model.components_.shape)
 
+# 각 단어 정수 인코딩 / 각 문서 단어 빈도수 기록
 # 단어집합 (1400개 단어)
 terms = vectorizer.get_feature_names() 
-
 from gensim import corpora
 dictionary = corpora.Dictionary(tokenized_doc)
 corpus = [dictionary.doc2bow(text) for text in tokenized_doc]
 
+# Model Training
 # Topic 별 최빈 단어 추출
 import gensim
 
@@ -174,14 +173,14 @@ k=1
 all=0
 co=0
 
-excepttopic=0 #군집크기가 10안되는 작은 군집 (and other(기타) 군집) 고려 안함
+excepttopic=0 
 
 while(k<=100):
     temp=0
     exceptnum=0
-    
     filter = data[data['Topic'] == k]
     
+    # 군집 내 단어수 5 미만인 문서 고려 안 함
     if (len(filter) > 5):
         print("-------------------")
     else:
@@ -202,15 +201,14 @@ while(k<=100):
             except:
                 exceptnum+=1
                 pass
-            
             temp+=(sim_score)
             
     temp= temp-5+exceptnum
     co= ((temp)/((5-exceptnum)*(4-exceptnum))) 
     # 군집 별 평균 word2vec 점수
     #'덕질'과 같은 vec에 없는 단어 고려 안 함
-    print(k,"번 Cluster의 Word2Vec Similarity : ", co)
-    
+
+    # other 군집 제거
     if k in [13,15,21,22,28,32,45,46,48,54,64,88]:
         excepttopic+=1
         co=0
