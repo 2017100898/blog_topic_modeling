@@ -38,7 +38,7 @@
  * 모든 주제에서 등장할 수 있는 단어 임의적으로 불용어 처리
  <br>
 
-```c
+```python
 
 # tokenize 를 위한 문서화
 text['guel'] = text.apply(lambda row: (row['guel']), axis=1)
@@ -117,7 +117,7 @@ __예시__
 <br>
 <br>
 
- ```c
+ ```python
 # Build Model
 lda_model = LatentDirichletAllocation(n_components=22, learning_method='online', random_state=777, max_iter=1)
 lda_top = lda_model.fit_transform(Y)
@@ -174,7 +174,7 @@ pyLDAvis.display(vis)
 <br>
 <br>
 
-```c
+```python
 naverData = pd.read_csv('plusotherblog_dt.csv',encoding='CP949')
 docs = naverData['stopwords'].values.tolist()
 
@@ -208,7 +208,7 @@ pyLDAvis.display(prepared_data)
  * LDA: Topic Coherence (0.62)
  * Kmeans: Average of Word2Vec Similarity (0.43)
 
-```c
+```python
 from __future__ import print_function
 from gensim.models import KeyedVectors
 ko_model = KeyedVectors.load_word2vec_format('wiki.ko.vec')
