@@ -1,8 +1,7 @@
 # 네이버 블로그 포스팅 토픽 모델링
 2020-1 경희대학교 데이터분석 캡스톤디자인 산업경영공학과 박혜원<br>
 (저작권 문제로 관련 데이터 삭제 후 git 공개합니다)   <br><br>
-<img src = "https://img.shields.io/badge/language-Python-9cf"> 
-
+[![name](https://img.shields.io/static/v1?&label=visualization&message=LDA&color=pink)](http://htmlpreview.github.io/?https://github.com/2017100898/BlogTopic/blob/master/vis/LDA.html) [![name](https://img.shields.io/static/v1?&label=visualization&message=Kmeans&color=lavender)](http://htmlpreview.github.io/?https://github.com/2017100898/BlogTopic/blob/master/vis/kmeans.html)  👈👈👈 💎💫🚀✨
 
 ## 배경 및 필요성
  * 네이버 블로그에서는 블로그 주제와 각 포스팅의 주제를 설정할 수 있으나, 이는 블로거가 직접 선택하는 것이기 때문에 **실제 주제와 명목상 주제가 다른 경우가 많다.** 
@@ -294,11 +293,8 @@ print(">>> 포함되지 않은 Clustering 개수 : " ,excepttopic)
 <br>
 
 ### 시각화자료
- [>>> LDA](https://woni-hye.tistory.com/6)
 
 ![LDA](https://user-images.githubusercontent.com/64299475/86433234-1fa45080-bd35-11ea-89c9-b2a3daffc87d.PNG)
-
-[>>> KMEANS](https://woni-hye.tistory.com/7)
 
 ![Kmeans](https://user-images.githubusercontent.com/64299475/86433246-2763f500-bd35-11ea-8b56-95af66d74bb8.PNG)
 ![Kmeans](https://user-images.githubusercontent.com/64299475/86433261-321e8a00-bd35-11ea-8a91-24a30b833b53.PNG)
